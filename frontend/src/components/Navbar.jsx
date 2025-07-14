@@ -7,7 +7,7 @@ const Navbar = ({ user, onFilterClick }) => {
 
   return (
     <nav className="navbar">
-      <h1>EventHub</h1>
+      <h1>Nautanki Nights</h1>
       <div className="nav-links">
         <Link to="/">Home</Link>
         <Link to="/add">Add Event</Link>
