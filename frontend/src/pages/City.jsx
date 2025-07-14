@@ -12,22 +12,23 @@ const City = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (city) {
-      setLoading(true);
-      axios
-        .get(`http://localhost:5000/api/events?city=${encodeURIComponent(city)}`)
-        .then((res) => {
-          setEvents(res.data);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error("Error fetching city events:", err);
-          setLoading(false);
-        });
-    }
+    if (!city) return;
+
+    setLoading(true);
+    axios
+      .get(`http://localhost/Backend/api/index.php/events?city=${encodeURIComponent(city)}`)
+      .then((res) => {
+        setEvents(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching city events:", err);
+        setLoading(false);
+      });
   }, [city]);
 
-  if (loading) return <p>Loading events in city "{city}"...</p>;
+  if (!city) return <p>❌ No city specified in the URL.</p>;
+  if (loading) return <p>Loading events in "{city}"...</p>;
 
   return (
     <div>

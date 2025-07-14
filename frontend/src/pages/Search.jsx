@@ -20,7 +20,7 @@ const Search = () => {
     if (date) params.append("date", date);
 
     axios
-      .get(`http://localhost:5000/api/events?${params.toString()}`)
+      .get(`http://localhost/Backend/api/index.php/events?${params.toString()}`)
       .then((res) => {
         setEvents(res.data);
         setLoading(false);

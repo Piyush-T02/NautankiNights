@@ -23,7 +23,7 @@ const AddEvent = ({ user }) => {
   const handleSubmit = e => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/events", formData)
+      .post("http://localhost/Backend/api/index.php/events", formData)
       .then(() => navigate("/"))
       .catch(err => console.log("POST Error:", err));
   };

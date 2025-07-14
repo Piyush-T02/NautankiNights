@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const formatDate = iso => new Date(iso).toLocaleDateString("en-IN");
+const formatDate = iso => {
+  if (!iso) return "-";
+  return new Date(iso).toLocaleDateString("en-IN");
+};
+
 const formatTime = time => {
+  if (!time) return "-";
   const [h, m] = time.split(":");
   const hr = parseInt(h);
   return `${hr % 12 || 12}:${m} ${hr >= 12 ? "PM" : "AM"}`;
@@ -14,12 +19,15 @@ const EventDetail = () => {
   const [event, setEvent] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/event/${id}`)
+    axios.get(`http://localhost/Backend/api/index.php/event/${id}`)
       .then(res => setEvent(res.data))
-      .catch(err => console.error("Fetch error:", err));
+      .catch(err => {
+        console.error("Fetch error:", err);
+        setEvent(null);
+      });
   }, [id]);
 
-  if (!event) return <p>Loading event...</p>;
+  if (!event || !event.title) return <p>Loading event...</p>;
 
   return (
     <div className="event-detail">

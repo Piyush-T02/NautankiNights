@@ -12,21 +12,22 @@ const Category = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (category) {
-      setLoading(true);
-      axios
-        .get(`http://localhost:5000/api/events?category=${encodeURIComponent(category)}`)
-        .then((res) => {
-          setEvents(res.data);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error("Error fetching category events:", err);
-          setLoading(false);
-        });
-    }
+    if (!category) return;
+
+    setLoading(true);
+    axios
+      .get(`http://localhost/Backend/api/index.php/events?category=${encodeURIComponent(category)}`)
+      .then((res) => {
+        setEvents(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching category events:", err);
+        setLoading(false);
+      });
   }, [category]);
 
+  if (!category) return <p>❌ No category specified in the URL.</p>;
   if (loading) return <p>Loading events for category "{category}"...</p>;
 
   return (

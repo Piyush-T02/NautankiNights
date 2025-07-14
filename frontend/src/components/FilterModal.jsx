@@ -18,8 +18,8 @@ const FilterModal = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
-      axios.get("http://localhost:5000/api/cities").then(res => setCities(res.data));
-      axios.get("http://localhost:5000/api/categories").then(res => setCategories(res.data));
+      axios.get("http://localhost/Backend/api/index.php/cities").then(res => setCities(res.data));
+      axios.get("http://localhost/Backend/api/index.php/categories").then(res => setCategories(res.data));
     }
   }, [isOpen]);
 

@@ -23,7 +23,7 @@ const Home = ({ appliedFilters }) => {
       if (appliedFilters.city) params.append('city', appliedFilters.city);
       if (appliedFilters.category) params.append('category', appliedFilters.category);
       
-      axios.get(`http://localhost:5000/api/events/filter?${params}`)
+      axios.get(`http://localhost/Backend/api/index.php/events/filter?${params}`)
         .then(res => {
           setEvents(res.data);
           setLoading(false);
@@ -34,7 +34,7 @@ const Home = ({ appliedFilters }) => {
         });
     } else {
       // Use regular endpoint for all events
-      axios.get("http://localhost:5000/api/events")
+      axios.get("http://localhost/Backend/api/index.php/events")
         .then(res => {
           setEvents(res.data);
           setLoading(false);
