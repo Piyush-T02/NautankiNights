@@ -7,8 +7,10 @@ A full-stack web application that allows users to:
 - 📸 Upload event images
 - 🧠 Store and manage data via MySQL
 
-Frontend: [https://your-frontend-link.com](#)  
-Backend (if deployed): [https://your-backend-link.com](#)
+Frontend: [(https://nautanki-nights.vercel.app/)](#)  
+Note: The backend and database run locally due to database hosting limitations.  
+Only the frontend is deployed. You can still replicate the full project locally using the instructions below.
+
 
 ## 📁 Project Structure
 
